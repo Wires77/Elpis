@@ -202,7 +202,7 @@ namespace Elpis
 
         private Control GetStationItem(object sender)
         {
-            return (Control)(((ImageButton)sender).FindParentByName<ContentControl>("StationItem"));
+            return (Control)(((SVGImageButton)sender).FindParentByName<ContentControl>("StationItem"));
         }
 
         private Station GetItemStation(object sender)

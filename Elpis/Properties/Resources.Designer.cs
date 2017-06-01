@@ -101,26 +101,6 @@ namespace Elpis.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon thumbs_down_icon {
-            get {
-                object obj = ResourceManager.GetObject("thumbs_down_icon", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon thumbs_up_icon {
-            get {
-                object obj = ResourceManager.GetObject("thumbs_up_icon", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap thumbs_down {
@@ -131,12 +111,32 @@ namespace Elpis.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon thumbs_down_icon {
+            get {
+                object obj = ResourceManager.GetObject("thumbs_down_icon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap thumbs_up {
             get {
                 object obj = ResourceManager.GetObject("thumbs_up", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon thumbs_up_icon {
+            get {
+                object obj = ResourceManager.GetObject("thumbs_up_icon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
     }

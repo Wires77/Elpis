@@ -1408,4 +1408,24 @@
     <Style TargetType="{x:Type Image}">
         <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality"/>
     </Style>
+    <Style x:Key="vectorButtonPlay"  TargetType="{x:Type Button}">
+        <Setter Property="Content">
+            <Setter.Value>
+                <Viewbox Width="48" Height="48">
+                    <Canvas Width="24" Height="24">
+                        <Path Data="M8,5.14V19.14L19,12.14L8,5.14Z" Fill="Black" />
+                    </Canvas>
+                </Viewbox>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="vectorButtonPause"  TargetType="{x:Type Button}">
+        <Setter Property="Content">
+            <Setter.Value>
+                <Viewbox Width="48" Height="48">
+                    <Path Data="M14,19H18V5H14M6,19H10V5H6V19Z" Fill="Black" />
+                </Viewbox>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

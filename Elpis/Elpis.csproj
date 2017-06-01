@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Elpis</RootNamespace>
     <AssemblyName>Elpis</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -26,6 +26,7 @@
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -35,6 +36,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>.\Resources\main_icon.ico</ApplicationIcon>
@@ -54,6 +56,7 @@
     <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
     <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <Win32Resource>
@@ -69,8 +72,17 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.3.0.823, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.2.3.0.823\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack">
       <HintPath>..\Libs\Microsoft.WindowsAPICodePack.dll</HintPath>
     </Reference>
@@ -99,6 +111,7 @@
     <Compile Include="ReleaseData\ReleaseData.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\SVGImageButton.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -226,6 +239,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\SVGImageButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Styles\Images.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -298,6 +315,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -305,25 +325,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\info.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\next_hover.png" />
-    <Resource Include="Images\next.png" />
-    <Resource Include="Images\pause_hover.png" />
-    <Resource Include="Images\pause.png" />
-    <Resource Include="Images\play_hover.png" />
-    <Resource Include="Images\play.png" />
-    <Resource Include="Images\settings.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\playlist.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\unknown_art.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\add.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\thumbDown.png" />
@@ -334,17 +336,7 @@
     <Resource Include="Images\thumbLove.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\menuRight.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\main_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\add_hover.png" />
-    <Resource Include="Images\info_hover.png" />
-    <Resource Include="Images\menuRight_hover.png" />
-    <Resource Include="Images\playlist_hover.png" />
-    <Resource Include="Images\settings_hover.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Libs\BassPlayer\BassPlayer.csproj">
@@ -383,19 +375,7 @@
     <Resource Include="Images\menu_info.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\check.png" />
-    <Resource Include="Images\check_hover.png" />
-    <Resource Include="Images\trash.png" />
-    <Resource Include="Images\trash_hover.png" />
-    <Resource Include="Images\write.png" />
-    <Resource Include="Images\write_hover.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\background.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\menuLeft.png" />
-    <Resource Include="Images\menuLeft_hover.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\error.png" />
@@ -405,20 +385,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ReleaseData\ReleaseDataReadme.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\close.png" />
-    <Resource Include="Images\close_hover.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\volume_0.png" />
-    <Resource Include="Images\volume_0_hover.png" />
-    <Resource Include="Images\volume_100.png" />
-    <Resource Include="Images\volume_100_hover.png" />
-    <Resource Include="Images\volume_33.png" />
-    <Resource Include="Images\volume_33_hover.png" />
-    <Resource Include="Images\volume_66.png" />
-    <Resource Include="Images\volume_66_hover.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\play-pause.ico" />

@@ -338,7 +338,7 @@ namespace Elpis
 
         private Song GetItemSong(object sender)
         {
-            return (Song) (((ImageButton) sender).FindParentByName<Grid>("SongItem")).DataContext;
+            return (Song) (((SVGImageButton) sender).FindParentByName<Grid>("SongItem")).DataContext;
         }
 
         private void ShowMenu(object sender)

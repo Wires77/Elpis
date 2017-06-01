@@ -22,6 +22,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Timers;
+using MaterialDesignThemes.Wpf;
 
 namespace Elpis
 {
@@ -69,6 +70,7 @@ namespace Elpis
             get { return sVolume.Value; }
             set { sVolume.Value = value; }
         }
+        public double _previousVolume;
 
         #region ItemStates
         
@@ -284,13 +286,41 @@ namespace Elpis
                 VolumeChanged(e.NewValue);
 
             if (Volume == 0)
-                imgVolume.Source = new BitmapImage(Resources["Image_Volume_0"] as System.Uri);
+                imgVolume.Kind = PackIconKind.VolumeOff;
             else if (Volume > 0 && Volume < 33)
-                imgVolume.Source = new BitmapImage(Resources["Image_Volume_33"] as System.Uri);
-            else if(Volume >= 33 && Volume < 66)
-                imgVolume.Source = new BitmapImage(Resources["Image_Volume_66"] as System.Uri);
-            else if(Volume >= 66)
-                imgVolume.Source = new BitmapImage(Resources["Image_Volume_100"] as System.Uri);
+                imgVolume.Kind = PackIconKind.VolumeLow;
+            else if (Volume >= 33 && Volume < 66)
+                imgVolume.Kind = PackIconKind.VolumeMedium;
+            else if (Volume >= 66)
+                imgVolume.Kind = PackIconKind.VolumeHigh;
+        }
+
+        private void sVolume_Mute(object sender, RoutedEventArgs e)
+        {
+            if (VolumeChanged != null)
+            {
+                if(Volume > 0)
+                {
+                    _previousVolume = Volume;
+                    Volume = 0;
+                    VolumeChanged(0);
+                    imgVolume.Kind = PackIconKind.VolumeOff;
+                }
+                else
+                {
+
+                    VolumeChanged(_previousVolume);
+                    Volume = _previousVolume;
+                    if (Volume > 0 && Volume < 33)
+                        imgVolume.Kind = PackIconKind.VolumeLow;
+                    else if (Volume >= 33 && Volume < 66)
+                        imgVolume.Kind = PackIconKind.VolumeMedium;
+                    else if (Volume >= 66)
+                        imgVolume.Kind = PackIconKind.VolumeHigh;
+                }
+            }
+
+
         }
 
         private void btnVolume_Click(object sender, RoutedEventArgs e)
@@ -317,6 +347,5 @@ namespace Elpis
         {
             volCloseTimer.Stop();
         }
-
     }
 }

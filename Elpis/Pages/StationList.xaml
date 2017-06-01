@@ -9,6 +9,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Elpis;component/Styles/ScrollBars.xaml" />
                 <ResourceDictionary Source="/Elpis;component/Styles/ImageButton.xaml" />
+                <ResourceDictionary Source="/Elpis;component/Styles/SVGImageButton.xaml" />
                 <ResourceDictionary Source="/Elpis;component/Styles/Misc.xaml" />
                 <ResourceDictionary Source="/Elpis;component/Styles/Brushes.xaml" />
                 <ResourceDictionary Source="/Elpis;component/Styles/BaseControls.xaml" />
@@ -69,9 +70,9 @@
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
-                                        <Controls:ImageButton Width="28" Height="28" x:Name="btnMenu" Grid.Column="0"
+                                        <Controls:SVGImageButton Width="28" Height="28" x:Name="btnMenu" Grid.Column="0"
                                         ToolTip="Show Station Menu"
-                                        ActiveImageUri="{StaticResource Image_MenuRightHover}" InactiveImageUri="{StaticResource Image_MenuRight}"
+                                        Kind="DotsVertical"
                                         VerticalAlignment="Center" HorizontalAlignment="Center" Click="btnMenu_Click" Visibility="Visible" />
 
                                         <TextBlock Grid.Column="1" Grid.ColumnSpan="2" Name="txtStationName" Text="{Binding Path=Name}" FontSize="22"
@@ -81,10 +82,10 @@
                                         <TextBox Visibility="Hidden" Name="txtRename" Grid.Column="1"
                                    FontSize="22" Margin="3" TextAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                    KeyUp="TextBox_KeyUp" />
-                                        <Controls:ImageButton Width="32" Height="32" Margin="4,2"
-                                                Grid.Column="2" x:Name="btnSaveRename" ActiveImageUri="{StaticResource Image_CheckHover}"
+                                        <Controls:SVGImageButton Width="32" Height="32" Margin="4,2"
+                                                Grid.Column="2" x:Name="btnSaveRename" Kind="Check"
                                                 ToolTip="Save"
-                                                InactiveImageUri="{StaticResource Image_Check}" Click="btnSaveRename_Click" VerticalAlignment="Center"
+                                                Click="btnSaveRename_Click" VerticalAlignment="Center"
                                                 HorizontalAlignment="Center" Visibility="Hidden" />
                                     </Grid>
                                 </Grid>

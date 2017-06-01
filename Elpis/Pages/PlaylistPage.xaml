@@ -9,6 +9,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Elpis;component/Styles/ScrollBars.xaml" />
                 <ResourceDictionary Source="/Elpis;component/Styles/ImageButton.xaml" />
+                <ResourceDictionary Source="/Elpis;component/Styles/SVGImageButton.xaml" />
                 <ResourceDictionary Source="/Elpis;component/Styles/BaseControls.xaml" />
                 <ResourceDictionary Source="/Elpis;component/Styles/Brushes.xaml" />
                 <ResourceDictionary Source="/Elpis;component/Styles/Misc.xaml" />
@@ -78,12 +79,12 @@
                                          ToolTip="Like Song"
                                          IsActive="{Binding Loved}" Click="btnThumbUp_Click" VerticalAlignment="Center" HorizontalAlignment="Center" />
                         </ElpisControls:ContentSpinner>
-                        <ElpisControls:ImageButton Padding="5" Width="25" Height="25" x:Name="btnMenu" Grid.Row="1"
-                                       ActiveImageUri="{StaticResource Image_MenuRightHover}" InactiveImageUri="{StaticResource Image_MenuRight}"
+                        <ElpisControls:SVGImageButton Padding="5" Width="25" Height="25" x:Name="btnMenu" Grid.Row="1"
+                                       Kind="DotsVertical"
                                        ToolTip="Show Song Menu"
                                        VerticalAlignment="Center" HorizontalAlignment="Center" Click="btnMenu_Click">
 
-                        </ElpisControls:ImageButton>
+                        </ElpisControls:SVGImageButton>
                         <ElpisControls:ContentSpinner x:Name="SpinDown" Grid.Row="2" NumberOfFrames="32"
                                           RevolutionsPerSecond="1.5" AutoStart="False">
                             <ElpisControls:ImageButton Width="25" Height="25" x:Name="btnThumbDown"
