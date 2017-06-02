@@ -36,16 +36,11 @@ namespace PandoraSharpPlayer
 {
     public class Player : INotifyPropertyChanged
     {
-        private const int MAX_PATH_LENGTH = 248;
-        private const int MAX_FILENAME_LENGTH = 260;
-
         private BassAudioEngine _bass;
         private Pandora _pandora;
 
         private bool _playNext;
         private Playlist _playlist;
-        public string _filePath = "";
-        private string _currentSongFileName;
 
         private SessionWatcher _sessionWatcher;
 
@@ -457,10 +452,7 @@ namespace PandoraSharpPlayer
 
                 try
                 {
-                    _currentSongFileName = buildFilePath(song);
-                    _bass.DownloadComplete += new BassAudioEngine.DownloadCompleteHandler(addSongMetaData);
-                    _bass.DownloadCanceled += new BassAudioEngine.DownloadCanceledHandler(deletePartiallyDownloadedFile);
-                    _bass.PlayStreamWithDownload(song.AudioUrl, _currentSongFileName, song.FileGain);                    
+                    _bass.Play(song.AudioUrl, song.FileGain);
                     _cqman.SendSongUpdate(song);
                     //_cqman.SendStatusUpdate(QueryStatusValue.Playing);
                 }
@@ -573,10 +565,9 @@ namespace PandoraSharpPlayer
                 return Path.Combine(folderPath, fileName);
             }
         }
-
         public void SeekToTime(int percentage)
         {
-            if(_bass.CanSeek())
+            if (_bass.CanSeek())
             {
                 _bass.SeekAsolutePercentage(percentage);
             }
@@ -1040,10 +1031,5 @@ namespace PandoraSharpPlayer
         }
 
         #endregion
-
-        public void SaveSong(string fileName)
-        {
-            _bass.SaveDownloadFile(fileName, _currentSongFileName);
-        }
     }
 }
